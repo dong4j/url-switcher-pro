@@ -242,6 +242,16 @@ function setupEventListeners() {
     const newConfig = { name: '', intranetUrl: '', internetUrl: '' };
     const configElement = createConfigElement(newConfig, configList.children.length);
     configList.appendChild(configElement);
+    
+    // 滚动到新添加的配置项
+    configElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    
+    // 自动聚焦到配置名输入框
+    const nameInput = configElement.querySelector('.name-input');
+    if (nameInput) {
+      nameInput.focus();
+    }
+    
     saveConfigs();
   });
 
