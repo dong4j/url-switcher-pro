@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "__MSG_extensionName__",
-  "version": "1.0",
-  "description": "__MSG_extensionDescription__",
+  "name": "__MSG_extName__",
+  "version": "1.0.0",
+  "description": "__MSG_extDesc__",
+  "author": "dong4j",
+  "homepage_url": "https://github.com/dong4j/url-switcher-pro",
   "default_locale": "zh_CN",
   "permissions": [
     "storage",
