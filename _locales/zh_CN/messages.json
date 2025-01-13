@@ -1,0 +1,53 @@
+{
+  "extensionName": {
+    "message": "URL 切换助手"
+  },
+  "extensionDescription": {
+    "message": "在内外网地址间自动切换，支持链接状态检测"
+  },
+  "enableAutoSwitch": {
+    "message": "启用自动切换"
+  },
+  "configName": {
+    "message": "名称"
+  },
+  "intranetUrl": {
+    "message": "内网地址"
+  },
+  "internetUrl": {
+    "message": "外网地址"
+  },
+  "checkStatus": {
+    "message": "检查状态"
+  },
+  "delete": {
+    "message": "删除"
+  },
+  "addConfig": {
+    "message": "添加配置"
+  },
+  "configNamePlaceholder": {
+    "message": "配置名称"
+  },
+  "intranetUrlPlaceholder": {
+    "message": "http://internal.example.com"
+  },
+  "internetUrlPlaceholder": {
+    "message": "https://external.example.com"
+  },
+  "redirectNotification": {
+    "message": "已自动切换到内网地址"
+  },
+  "urlDetected": {
+    "message": "检测到可能的配置项，是否添加？"
+  },
+  "exportConfig": {
+    "message": "导出配置"
+  },
+  "importConfig": {
+    "message": "导入配置"
+  },
+  "importError": {
+    "message": "导入失败，请检查文件格式是否正确"
+  }
+}

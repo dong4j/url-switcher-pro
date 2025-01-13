@@ -1,0 +1,44 @@
+{
+  "extensionName": {
+    "message": "URL Switcher Pro"
+  },
+  "extensionDescription": {
+    "message": "Automatically switch between intranet and internet URLs with status detection"
+  },
+  "enableAutoSwitch": {
+    "message": "Enable Auto Switch"
+  },
+  "configName": {
+    "message": "Name"
+  },
+  "intranetUrl": {
+    "message": "Intranet URL"
+  },
+  "internetUrl": {
+    "message": "Internet URL"
+  },
+  "checkStatus": {
+    "message": "Check Status"
+  },
+  "delete": {
+    "message": "Delete"
+  },
+  "addConfig": {
+    "message": "Add Configuration"
+  },
+  "configNamePlaceholder": {
+    "message": "Configuration Name"
+  },
+  "intranetUrlPlaceholder": {
+    "message": "http://internal.example.com"
+  },
+  "internetUrlPlaceholder": {
+    "message": "https://external.example.com"
+  },
+  "redirectNotification": {
+    "message": "Automatically switched to intranet URL"
+  },
+  "urlDetected": {
+    "message": "Possible configuration detected. Would you like to add it?"
+  }
+}

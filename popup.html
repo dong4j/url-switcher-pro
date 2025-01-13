@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>URL Switcher Pro</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Header styles */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 5px;
+    }
+
+    /* Switch styles */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    /* Config item styles */
+    .config-item {
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background-color: #f8f9fa;
+    }
+
+    .config-item input[type="text"] {
+      width: 100%;
+      padding: 8px 12px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .config-item input[type="text"].name-input {
+      font-weight: 500;
+      border-bottom: 2px solid #2196F3;
+      margin-bottom: 10px;
+    }
+
+    .config-item input[type="text"]:focus {
+      border-color: #2196F3;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(33,150,243,0.1);
+    }
+
+    /* Button styles */
+    .button {
+      padding: 8px 16px;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    /* Config item actions */
+    .config-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .check-status {
+      background-color: #673AB7;
+    }
+
+    .check-status:hover {
+      background-color: #5E35B1;
+    }
+
+    .delete {
+      background-color: #f44336;
+    }
+
+    .delete:hover {
+      background-color: #e53935;
+    }
+
+    /* Global actions */
+    .global-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    #addConfig {
+      background-color: #4CAF50;
+    }
+
+    #addConfig:hover {
+      background-color: #45a049;
+    }
+
+    #exportConfig {
+      background-color: #2196F3;
+    }
+
+    #exportConfig:hover {
+      background-color: #1976D2;
+    }
+
+    #importConfig {
+      background-color: #FF9800;
+    }
+
+    #importConfig:hover {
+      background-color: #F57C00;
+    }
+
+    .status-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      align-items: center;
+    }
+
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .status-success {
+      background-color: #4CAF50;
+      box-shadow: 0 0 5px rgba(76,175,80,0.5);
+    }
+
+    .status-error {
+      background-color: #f44336;
+      box-shadow: 0 0 5px rgba(244,67,54,0.5);
+    }
+
+    .status-loading {
+      background-color: #FFC107;
+      box-shadow: 0 0 5px rgba(255,193,7,0.5);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <label class="switch">
+        <input type="checkbox" id="globalSwitch">
+        <span class="slider"></span>
+      </label>
+      <span id="enableAutoSwitch">Enable Auto Switch</span>
+    </div>
+    
+    <div id="configList"></div>
+
+    <div class="global-actions">
+      <button id="addConfig" class="button">Add Config</button>
+      <button id="exportConfig" class="button">Export</button>
+      <button id="importConfig" class="button">Import</button>
+      <input type="file" id="importInput" accept=".json" style="display: none;">
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
